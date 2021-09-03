@@ -30,10 +30,10 @@ public class CategoryController {
 	}
 	
 	@PostMapping
-	public Category findAll(@RequestBody Category cateRequest){
-		if(cateRequest.getName() != null) {
-			return null;
-		}
+	public Category insert(@RequestBody Category cateRequest){
+//		if(cateRequest.getName() != null) {
+//			return null;
+//		}
 		Category category =  categoryService.insert(cateRequest);
 		return category;
 	}
