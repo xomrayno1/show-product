@@ -31,9 +31,9 @@ public class CategoryController {
 	
 	@PostMapping
 	public Category insert(@RequestBody Category cateRequest){
-//		if(cateRequest.getName() != null) {
-//			return null;
-//		}
+		if(cateRequest.getName() != null) {
+			return null;
+		}
 		Category category =  categoryService.insert(cateRequest);
 		return category;
 	}
