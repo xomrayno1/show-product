@@ -7,12 +7,13 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.app.model.Category;
+import com.app.model.Product;
 
 @Repository
-public interface CategoryRepository extends CrudRepository<Category, Long>, JpaSpecificationExecutor<Category>{
+public interface ProductRepository extends CrudRepository<Product, Long>, JpaSpecificationExecutor<Product>{
+
 	@Override
-	List<Category> findAll();
+	List<Product> findAll();
 	
-	Optional<Category> findByName(String name);
+	Optional<Product> findByName(String name);
 }
