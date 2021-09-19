@@ -37,7 +37,7 @@ import com.app.utils.ResponseUtil;
 
 @RestController
 @RequestMapping(value = Constant.PRODUCT_API)
-@CrossOrigin(value = {Constant.CROSS_ORIGIN_LOCAL})
+@CrossOrigin(value = {Constant.CROSS_ORIGIN_LOCAL, Constant.CROSS_ORIGIN_SN_STORE})
 public class ProductController {
 	
 	private ProductService productService;
