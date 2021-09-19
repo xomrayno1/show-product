@@ -3,7 +3,7 @@ package com.app.utils;
 public interface Constant {
 	
 	public static final String CROSS_ORIGIN_LOCAL = "http://localhost:3000";
-	public static final String CROSS_ORIGIN_SN_STORE = "https://sn-store.herokuapp.com/";
+	public static final String CROSS_ORIGIN_SN_STORE = "https://sn-store.herokuapp.com";
 	/*
 	 * define sort
 	 */
