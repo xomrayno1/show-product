@@ -56,6 +56,7 @@ public class ProductController {
 	
 	@PostMapping(Constant.PRODUCT_GET_LIST_PAGING_SORT_SEARCH_FILTER)
 	public ResponseEntity<APIResponse> getListPagingSortSearchFilter(@RequestBody ProductPagingSearchSortModel ppssm) {
+			
 		try {
 			mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 			
@@ -68,7 +69,7 @@ public class ProductController {
 			//mapper
 			List<ProductResponse> responses = page.getContent().stream().map(item -> {
 				ProductResponse productResponse = mapper.map(item, ProductResponse.class);
-				Category category = categoryService.findById(item.getCategory().getId());
+				Category category = categoryService.findById(item.getCategoryId());
 				if(category != null) {
 					productResponse.setCategoryId(category.getId());
 					productResponse.setCategoryName(category.getName());
@@ -92,7 +93,7 @@ public class ProductController {
 		if(product != null) {
 			//mapper
 			ProductResponse productResponse = mapper.map(product, ProductResponse.class);
-			Category category = categoryService.findById(product.getCategory().getId());
+			Category category = categoryService.findById(product.getCategoryId());
 			if(category != null) {
 				productResponse.setCategoryId(category.getId());
 				productResponse.setCategoryName(category.getName());
@@ -142,7 +143,7 @@ public class ProductController {
 					log.error("Error create product category id is null");
 					throw new ApplicationException(APIStatus.ERR_PRODUCT_CATEGORY_IS_NULL);
 				}
-				product.setCategory(category);
+				product.setCategoryId(productRequest.getCategoryId());
 				productService.insert(product);
 				log.info("Create product successfully");
 			} catch (Exception e) {
@@ -179,7 +180,7 @@ public class ProductController {
 					log.error("Error create product category id is null");
 					throw new ApplicationException(APIStatus.ERR_PRODUCT_CATEGORY_IS_NULL);
 				}
-				product.setCategory(category);
+				product.setCategoryId(productRequest.getCategoryId());
 				
 				product.setActiveFlag(productById.getActiveFlag());
 				product.setCreatedDate(productById.getCreatedDate());

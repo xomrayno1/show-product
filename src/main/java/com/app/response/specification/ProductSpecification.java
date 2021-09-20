@@ -36,7 +36,6 @@ public class ProductSpecification implements Specification<Product>{
 		
 		if(searchKey != null && !searchKey.trim().isEmpty()) {
 			String wrapSearch = "%" + searchKey.trim() +"%";
-			System.out.println(wrapSearch);
 			Predicate proName = criteriaBuilder.like(root.get("name"), wrapSearch);
 			predicates.add(proName);
 		}
@@ -44,7 +43,7 @@ public class ProductSpecification implements Specification<Product>{
 		if(categoryId != 0) {
 			Root<Category> cateRoot = query.from(Category.class);
 			predicates.add(criteriaBuilder.equal(cateRoot.get("id"), categoryId));
-			predicates.add(criteriaBuilder.equal(root.get("category.id"), cateRoot.get("id")));
+			predicates.add(criteriaBuilder.equal(root.get("categoryId"), cateRoot.get("id")));
 		}
 
 		//select * from s  inner join a on a.id = s.id where a.id = 1
